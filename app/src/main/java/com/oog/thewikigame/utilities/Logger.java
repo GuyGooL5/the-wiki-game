@@ -1,4 +1,4 @@
-package com.oog.thewikigame.Utilities;
+package com.oog.thewikigame.utilities;
 
 import android.util.Log;
 

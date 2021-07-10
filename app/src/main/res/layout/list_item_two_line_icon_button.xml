@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="twoLineIconButtonModel"
+            type="com.oog.thewikigame.models.TwoLineIconButtonModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="true"
+        android:minHeight="64dp"
+        android:orientation="horizontal">
+
+        <!--        Two TextViews in a LinearLayout-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:maxLines="1"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="8dp"
+                android:text="@{twoLineIconButtonModel.primaryText}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:maxLines="2"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"
+                android:text="@{twoLineIconButtonModel.secondaryText}"
+                android:textAppearance="?attr/textAppearanceBody2" />
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/material_icon_button_flat"
+            app:iconButtonModel="@{twoLineIconButtonModel.iconButtonModel}" />
+    </LinearLayout>
+</layout>

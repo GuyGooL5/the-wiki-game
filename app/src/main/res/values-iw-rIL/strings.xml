@@ -3,4 +3,24 @@
     <string name="app_name">"משחק הויקיפדיה "</string>
     <string name="alert_invalid_link">ניסית לגשת ללינק לא חוקי.</string>
     <string name="button_ok">אוקיי</string>
+    <string name="main_button_play">שחק/י</string>
+    <string name="main_button_records">הסטוריית משחקים</string>
+    <string name="main_button_about">אודות</string>
+    <string name="text_title">משחק הויקיפדיה</string>
+    <string name="text_settings">הגדרות</string>
+    <string name="settings_button_reset_settings">איפוס הגדרות</string>
+    <string name="settings_dialog_reset_title">איפוס הגדרות</string>
+    <string name="settings_dialog_reset_description">פעולה זו תאפס את כל הגדרות האפליקציה ותשחזר אותן למצבן המקורי. האם את/ה בטוח/ה?</string>
+    <string name="text_yes">כן</string>
+    <string name="text_no">לא</string>
+    <string name="settings_text_language">שפה</string>
+    <string name="settings_text_language_description">כרגע מוגדרת כעברית</string>
+    <string name="settings_text_sounds">צלילים</string>
+    <string name="settings_text_sounds_description">מיתוג צליל פועל/כבוי</string>
+    <string name="settings_text_dark_theme">הפעל מצב חשוך</string>
+    <string name="settings_text_dark_theme_description">מגדיר את האפליקציה כמצב חשוב כאשר מופעל</string>
+    <string name="text_game_configuration">הגדרות משחק</string>
+    <string name="game_config_text_start_article">מאמר התחלתי</string>
+    <string name="text_loading">טוען…</string>
+    <string name="game_config_text_end_article">מאמר סיום</string>
 </resources>

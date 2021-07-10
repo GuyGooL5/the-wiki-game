@@ -7,13 +7,17 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TheWikiGame"
-        android:fullBackupContent="true">
-        <activity android:name=".Activities.MainActivity">
+        android:theme="@style/Theme.TheWikiGame">
+        <activity android:name=".activities.AboutActivity"/>
+        <activity android:name=".activities.GameRecordsActivity" />
+        <activity android:name=".activities.GameConfigActivity" />
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

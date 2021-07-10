@@ -1,4 +1,4 @@
-package com.oog.thewikigame.Handlers;
+package com.oog.thewikigame.handlers;
 
 /**
  * Enum to store all rescue types.

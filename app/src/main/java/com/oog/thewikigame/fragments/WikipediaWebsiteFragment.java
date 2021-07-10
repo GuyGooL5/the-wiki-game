@@ -1,4 +1,4 @@
-package com.oog.thewikigame.Fragments;
+package com.oog.thewikigame.fragments;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.oog.thewikigame.Handlers.WebViewHandler;
+import com.oog.thewikigame.handlers.WebViewHandler;
 import com.oog.thewikigame.R;
 
 public class WikipediaWebsiteFragment extends Fragment {

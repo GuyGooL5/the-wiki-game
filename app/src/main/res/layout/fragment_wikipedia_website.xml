@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.WikipediaWebsiteFragment">
+    tools:context=".fragments.WikipediaWebsiteFragment">
 
     <WebView
         android:id="@+id/wikipedia_website_webview_id"

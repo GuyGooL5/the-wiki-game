@@ -1,11 +1,41 @@
 <resources>
     <string name="app_name">The Wiki Game</string>
 
-
     <!--    Buttons-->
     <string name="button_ok">OK</string>
 
-
     <!--    Alerts-->
     <string name="alert_invalid_link">You tried to reach an invalid link.</string>
+
+    <!--    General Texts-->
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="text_game_configuration">Game Configuration</string>
+    <string name="text_version" translatable="false">ver. alpha 0.1.0</string>
+    <string name="text_loading">Loading…</string>
+    <string name="text_title">The Wiki Game</string>
+    <string name="text_settings">Settings</string>
+
+    <!--    Main Activity-->
+    <string name="main_button_play">Play</string>
+    <string name="main_button_records">Game Records</string>
+    <string name="main_button_about">About</string>
+
+    <!--    Game Configuration Activity-->
+    <string name="game_config_text_start_article">Start Article</string>
+    <string name="game_config_text_end_article">End Article</string>
+
+    <!--    Settings Activity-->
+    <string name="settings_text_language">Language</string>
+    <string name="settings_text_language_description">Currently set to English</string>
+    <string name="settings_text_sounds">Sounds</string>
+    <string name="settings_text_sounds_description">Toggle sounds on/off</string>
+    <string name="settings_text_dark_theme">Apply Dark Theme</string>
+    <string name="settings_text_dark_theme_description">Sets the app to dark mode if switched on</string>
+    <string name="settings_button_reset_settings">Reset settings</string>
+    <string name="settings_dialog_reset_title">Reset Settings</string>
+    <string name="settings_dialog_reset_description">This action will reset all application settings and return it to stock. Are you sure?</string>
+
+
+
 </resources>

@@ -5,6 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="pink_900">#ff870d4c</color>
+    <color name="pink_900_light">#ffbb4678</color>
+    <color name="pink_900_dark">#ff550024</color>
+    <color name="lightBlue_700">#ff0288d1</color>
+    <color name="lightBlue_700_light">#ff5eb8ff</color>
+    <color name="lightBlue_700_dark">#ff005b9f</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="danger">@color/design_default_color_error</color>
+    <color name="dangerRipple">#80B00020</color>
 </resources>

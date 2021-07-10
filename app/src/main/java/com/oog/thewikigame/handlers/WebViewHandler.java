@@ -1,4 +1,4 @@
-package com.oog.thewikigame.Handlers;
+package com.oog.thewikigame.handlers;
 
 import android.annotation.SuppressLint;
 import android.webkit.WebResourceRequest;
@@ -9,8 +9,8 @@ import androidx.annotation.StringRes;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.oog.thewikigame.R;
-import com.oog.thewikigame.Utilities.LogTag;
-import com.oog.thewikigame.Utilities.Logger;
+import com.oog.thewikigame.utilities.LogTag;
+import com.oog.thewikigame.utilities.Logger;
 
 import org.jetbrains.annotations.NotNull;
 

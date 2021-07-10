@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sounds"
+            type="com.oog.thewikigame.models.TwoLineSwitchModel" />
+
+        <variable
+            name="darkTheme"
+            type="com.oog.thewikigame.models.TwoLineSwitchModel" />
+
+        <variable
+            name="language"
+            type="com.oog.thewikigame.models.TwoLineIconButtonModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/settings_appbar_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/settings_appbar_toolbar_id"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:title="@string/text_settings" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:id="@+id/setting_layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".activities.SettingsActivity">
+
+                <include
+                    android:id="@+id/settings_sound_item_id"
+                    layout="@layout/list_item_two_line_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:twoLineSwitchModel="@{sounds}" />
+
+                <include
+                    android:id="@+id/settings_dark_theme_item_id"
+                    layout="@layout/list_item_two_line_switch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:twoLineSwitchModel="@{darkTheme}" />
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" />
+
+                <include
+                    android:id="@+id/settings_language_item_id"
+                    layout="@layout/list_item_two_line_icon_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:twoLineIconButtonModel="@{language}" />
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/settings_reset_item_id"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Danger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:height="64dp"
+                    android:text="@string/settings_button_reset_settings"
+                    android:textAlignment="textStart"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
