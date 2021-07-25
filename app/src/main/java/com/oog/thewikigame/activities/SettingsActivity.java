@@ -1,24 +1,24 @@
 package com.oog.thewikigame.activities;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.oog.thewikigame.R;
+import com.oog.thewikigame.databinding.ActivitySettingsBinding;
 import com.oog.thewikigame.handlers.LocaleHandler;
 import com.oog.thewikigame.handlers.ThemeHandler;
 import com.oog.thewikigame.models.IconButtonModel;
 import com.oog.thewikigame.models.TwoLineIconButtonModel;
+import com.oog.thewikigame.models.TwoLineSwitchModel;
 import com.oog.thewikigame.utilities.ActivityResultUtil;
 import com.oog.thewikigame.utilities.LogTag;
 import com.oog.thewikigame.utilities.Logger;
-import com.oog.thewikigame.models.TwoLineSwitchModel;
-import com.oog.thewikigame.databinding.ActivitySettingsBinding;
 import com.oog.thewikigame.wrappers.SharedPreferencesWrapper;
 
 
@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
             SharedPreferencesWrapper.make(this, SharedPreferencesWrapper.Preference.SETTINGS).clearAllPreferences();
             SharedPreferencesWrapper.make(this, SharedPreferencesWrapper.Preference.GAME).clearAllPreferences();
             SharedPreferencesWrapper.make(this, SharedPreferencesWrapper.Preference.USER).clearAllPreferences();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             Runtime.getRuntime().exit(0);
         }));
 
@@ -75,14 +75,18 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void initSoundsSwitch() {
+        SharedPreferencesWrapper settingsSharedPreferences = SharedPreferencesWrapper
+                .make(this, SharedPreferencesWrapper.Preference.SETTINGS);
         TwoLineSwitchModel soundsModel = new TwoLineSwitchModel(this,
                 R.string.settings_text_sounds,
                 R.string.settings_text_sounds_description) {{
             this.setOnToggleListener(checked -> {
                 //TODO: Add Sound toggle Logic.
-                Logger.log(LogTag.SETTINGS_ACTIVITY, "Toggled sounds", checked ? "on" : "off");
+                settingsSharedPreferences.putString(
+                        "MUSIC", checked ? "true" : "false");
             });
         }};
+        soundsModel.setChecked(settingsSharedPreferences.getString("MUSIC","true").equals("true"));
         binding.setSounds(soundsModel);
     }
 

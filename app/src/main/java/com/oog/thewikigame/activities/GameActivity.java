@@ -1,15 +1,16 @@
 package com.oog.thewikigame.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
@@ -22,8 +23,7 @@ import com.oog.thewikigame.handlers.Game;
 import com.oog.thewikigame.handlers.Page;
 import com.oog.thewikigame.handlers.RescueType;
 import com.oog.thewikigame.models.IconButtonModel;
-import com.oog.thewikigame.utilities.LogTag;
-import com.oog.thewikigame.utilities.Logger;
+import com.oog.thewikigame.wrappers.SharedPreferencesWrapper;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,11 +44,18 @@ public class GameActivity extends AppCompatActivity {
     BadgeDrawable showLinksOnlyBadge;
     BadgeDrawable findInTextBadge;
 
+    MediaPlayer music=null;
 
     @SuppressLint("UnsafeExperimentalUsageError") //BadgeDrawable is experimental
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        if (SharedPreferencesWrapper.make(this, SharedPreferencesWrapper.Preference.SETTINGS).getString("MUSIC", "true").equals("true")) {
+            music = MediaPlayer.create(this, R.raw.elevator_music);
+            music.start();
+        }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game);
 
@@ -71,15 +78,15 @@ public class GameActivity extends AppCompatActivity {
             @Override
             protected void onGameFinished(boolean success, List<Page.PageSummary> pageSummaryList) {
                 MaterialAlertDialogBuilder finishDialog = new MaterialAlertDialogBuilder(binding.getRoot().getContext());
-                finishDialog.setTitle(success?"Good Job":"Failed");
-                StringBuilder sb=new StringBuilder();
+                finishDialog.setTitle(success ? "Good Job" : "Failed");
+                StringBuilder sb = new StringBuilder();
                 sb.append("[--START--]\n");
                 for (Page.PageSummary pageSummary : pageSummaryList)
-                    sb.append(pageSummary.article).append(" [").append(pageSummary.timeInPage/1000).append("s] ->  \n");
+                    sb.append(pageSummary.article).append(" [").append(pageSummary.timeInPage / 1000).append("s] ->  \n");
                 sb.append("[--END--]");
                 finishDialog.setMessage(sb.toString());
-                finishDialog.setPositiveButton(R.string.game_dialog_new_game,(d,v)->finish());
-                finishDialog.setOnDismissListener(v->finish());
+                finishDialog.setPositiveButton(R.string.game_dialog_new_game, (d, v) -> finish());
+                finishDialog.setOnDismissListener(v -> finish());
                 game.pause();
                 finishDialog.show();
             }
@@ -145,7 +152,7 @@ public class GameActivity extends AppCompatActivity {
             return false;
         });
 
-        binding.gameToolbarId.getMenu().findItem(R.id.game_menu_pause).setOnMenuItemClickListener(item->{
+        binding.gameToolbarId.getMenu().findItem(R.id.game_menu_pause).setOnMenuItemClickListener(item -> {
             openMenuDialog();
             return false;
         });
@@ -200,22 +207,32 @@ public class GameActivity extends AppCompatActivity {
         openMenuDialog();
     }
 
-    private void openMenuDialog(){
+    private void openMenuDialog() {
         MaterialAlertDialogBuilder dialogBuilder = new MaterialAlertDialogBuilder(this);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_pause_menu,null);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_pause_menu, null);
         DialogPauseMenuBinding binding = DataBindingUtil.bind(dialogView);
         Objects.requireNonNull(binding).setEndArticleString(gameConfig.getEndArticle());
         dialogBuilder.setView(dialogView);
-        Objects.requireNonNull(binding).setExitButtonModel(new IconButtonModel(this,R.drawable.ic_baseline_close_24, v->{
+        Objects.requireNonNull(binding).setExitButtonModel(new IconButtonModel(this, R.drawable.ic_baseline_close_24, v -> {
             finish();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         }));
-        binding.setRestartButtonModel(new IconButtonModel(this,R.drawable.ic_baseline_refresh_24,v->{
+        binding.setRestartButtonModel(new IconButtonModel(this, R.drawable.ic_baseline_refresh_24, v -> {
             finish();
         }));
         game.pause();
-        dialogBuilder.setOnDismissListener(v->game.resume());
+        dialogBuilder.setOnDismissListener(v -> game.resume());
         dialogBuilder.show();
     }
 
+
+    @Override
+    public void finish() {
+        if (music != null) {
+            music.stop();
+            music.release();
+            music = null;
+        }
+        super.finish();
+    }
 }

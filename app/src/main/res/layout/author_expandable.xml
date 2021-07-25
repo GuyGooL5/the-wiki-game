@@ -8,12 +8,13 @@
             type="com.oog.thewikigame.models.AuthorModel" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <com.oog.thewikigame.views.PrettyCard
+        android:id="@+id/author_expandable_card_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:elevation="2dp"
-        android:onClick="@{()->model.toggle()}">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,5 +77,5 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2" />
             </LinearLayout>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </com.oog.thewikigame.views.PrettyCard>
 </layout>

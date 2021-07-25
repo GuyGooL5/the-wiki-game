@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="author1Model"
             type="com.oog.thewikigame.models.AuthorModel" />
+
         <variable
             name="author2Model"
             type="com.oog.thewikigame.models.AuthorModel" />
+
         <variable
             name="author3Model"
             type="com.oog.thewikigame.models.AuthorModel" />
@@ -68,12 +71,20 @@
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
 
-                <include layout="@layout/author_expandable"
-                    app:model="@{author1Model}"/>
-                <include layout="@layout/author_expandable"
-                    app:model="@{author2Model}"/>
-                <include layout="@layout/author_expandable"
-                    app:model="@{author3Model}"/>
+                <include
+                    android:id="@+id/about_author_1_id"
+                    layout="@layout/author_expandable"
+                    app:model="@{author1Model}" />
+
+                <include
+                    android:id="@+id/about_author_2_id"
+                    layout="@layout/author_expandable"
+                    app:model="@{author2Model}" />
+
+                <include
+                    android:id="@+id/about_author_3_id"
+                    layout="@layout/author_expandable"
+                    app:model="@{author3Model}" />
 
 
                 <com.google.android.material.textview.MaterialTextView
